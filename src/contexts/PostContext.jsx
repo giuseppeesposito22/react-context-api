@@ -1,18 +1,20 @@
 import axios from "axios";
-import { createContext, createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 
 const PostContext = createContext();
 
-function PostProvider({ child }) {
+function PostProvider({ children }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/posts").then((res) => {
       setPosts(res.data.data);
     });
-  });
+  }, []);
 
-  return <PostContext.Provider value={{ posts }}>{child}</PostContext.Provider>;
+  return (
+    <PostContext.Provider value={{ posts }}>{children}</PostContext.Provider>
+  );
 }
 
 function usePost() {
