@@ -1,16 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-
+import { usePost } from "../contexts/PostContext";
 import PostCard from "./PostCard";
 
 export default function PostsList() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3000/posts").then((res) => {
-      setPosts(res.data.data);
-    });
-  }, []);
+  const { posts } = usePost();
 
   return (
     <div className="row row-cols-2 g-4">
