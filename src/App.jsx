@@ -10,7 +10,7 @@ import path from "./data/path";
 
 // import delle pagine sotto il path posts
 
-import PostListPage from "./pages/posts/PostListPage";
+import PostsListPage from "./pages/posts/PostsListPage";
 import PostDetailPage from "./pages/posts/PostDetailPage";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
 
             {/* rotte che hanno in comune il prefisso posts */}
             <Route path="/posts">
-              <Route path="" element={<PostListPage />} />
+              <Route path="" element={<PostsListPage />} />
               <Route path=":id" element={<PostDetailPage />} />
             </Route>
           </Route>
